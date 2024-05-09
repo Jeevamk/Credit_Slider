@@ -8,6 +8,7 @@ const StyledCreditDisplay = styled(Typography)(({ theme }) => ({
 }));
 
 
+
 const PrettoSlider = styled(Slider)(({ theme }) => ({
   color: '#9747FF',
   height: 8,
@@ -44,7 +45,7 @@ const AutoTopUp: React.FC = () => {
   };
 
 return (
-    <Box sx={{ maxWidth: 700, width: '100%', margin: 'auto', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', padding: 8, borderRadius: 4 }}>
+    <Box sx={{ maxWidth: 700, width: '100%', margin: 'auto', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', padding: 8, borderRadius: 4,marginTop: '20vh'}}>
       <Grid container spacing={2} alignItems="center">
         <Grid item xs={8}>
           <Typography sx={{ fontWeight: 'bold', fontSize: '1.4rem' }}>Setup Auto Top-up</Typography>
@@ -60,19 +61,20 @@ return (
       {autoTopUpEnabled ? (
         <>
           <Typography gutterBottom sx={{ color: 'gray', fontSize: "14px" }}>
-            Once the credit goes below a minimum threshold {sliderValue},
+            Once the credit goes below a minimum threshold <strong>{sliderValue}</strong>,
             we will auto-purchase{' '}
+            <strong>
             {sliderValue < 10
-              ? (sliderValue * 100).toFixed(2)
+              ? (sliderValue * 100)
               : sliderValue < 20
-                ? (sliderValue * 100 + 200).toFixed(2)
+                ? (sliderValue * 100 + 200)
                 : sliderValue < 25 && sliderValue > 20
-                  ? (sliderValue * 100 + 500).toFixed(2)
+                  ? (sliderValue * 100 + 500)
                   : sliderValue < 30 && sliderValue >= 25
                     ? (sliderValue * 100 + 1400).toFixed(2)
                     : sliderValue === 30
                       ? (sliderValue * 100 + 2000).toFixed(2)
-                      : ''}{' '}
+                      : ''}{' '} </strong>
             credits and add them to your account. Learn more
           </Typography>
 
@@ -82,12 +84,12 @@ return (
             aria-labelledby="slider"
             step={1}
             marks={[
-              { value: 5, label: <><Typography variant="subtitle2" sx={{textAlign:'center'}}>$5</Typography><Typography variant="caption" sx={{textAlign:'match-parent'}}>500 Credits</Typography></> },
-              { value: 10, label: <><Typography variant="subtitle2"  sx={{textAlign:'center'}}>$10</Typography><Typography variant="caption" sx={{textAlign:'center'}}>1200 Credits</Typography></> },
-              { value: 15, label: <><Typography variant="subtitle2"  sx={{textAlign:'center'}}>$15</Typography><Typography variant="caption" sx={{textAlign:'center'}}>1700 Credits</Typography></> },
-              { value: 20, label: <><Typography variant="subtitle2"  sx={{textAlign:'center'}}>$20</Typography><Typography variant="caption" sx={{textAlign:'center'}}>2500 Credits</Typography></> },
-              { value: 25, label: <><Typography variant="subtitle2"  sx={{textAlign:'center'}}>$25</Typography><Typography variant="caption" sx={{textAlign:'center'}}>3900 Credits</Typography></> },
-              { value: 30, label: <><Typography variant="subtitle2"  sx={{textAlign:'center'}}>$30</Typography><Typography variant="caption" sx={{textAlign:'center'}}>5000 Credits</Typography></> },
+              { value: 5, label: <><Typography variant="subtitle2" sx={{textAlign:'center',fontWeight:'bold'}}>$5</Typography><Typography variant="caption" sx={{textAlign:'match-parent'}}>500 Credits</Typography></> },
+              { value: 10, label: <><Typography variant="subtitle2"  sx={{textAlign:'center',fontWeight:'bold'}}>$10</Typography><Typography variant="caption" sx={{textAlign:'center'}}>1200 Credits</Typography></> },
+              { value: 15, label: <><Typography variant="subtitle2"  sx={{textAlign:'center',fontWeight:'bold'}}>$15</Typography><Typography variant="caption" sx={{textAlign:'center'}}>1700 Credits</Typography></> },
+              { value: 20, label: <><Typography variant="subtitle2"  sx={{textAlign:'center',fontWeight:'bold'}}>$20</Typography><Typography variant="caption" sx={{textAlign:'center'}}>2500 Credits</Typography></> },
+              { value: 25, label: <><Typography variant="subtitle2"  sx={{textAlign:'center',fontWeight:'bold'}}>$25</Typography><Typography variant="caption" sx={{textAlign:'center'}}>3900 Credits</Typography></> },
+              { value: 30, label: <><Typography variant="subtitle2"  sx={{textAlign:'center',fontWeight:'bold'}}>$30</Typography><Typography variant="caption" sx={{textAlign:'center'}}>5000 Credits</Typography></> },
             ]}
             min={5}
             max={30}
